@@ -15,12 +15,12 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <div id="app">
-        <input type="text" v-model = "message" placeholder="Inserisci un Task">
-        <button @click = "addTodo()">Add</button>
+        <input type="text" v-model="message" placeholder="Inserisci un Task" @keyup.enter="addTodo()">
+        <button @click="addTodo()">Add</button>
         <ul>
-            <li v-for="(todo,i) in todos" :key="i" :class="todo.done === true ? 'done' : '' ">
+            <li v-for="(todo,i) in todos" :key="i" :class="todo.done === true ? 'done' : '' " @click="checkDone(i)">
                 {{todo.text}}
-                <i class="fa-solid fa-x" @click = "removeTodo(i)"></i>
+                <i class="fa-solid fa-x" @click="removeTodo(i)"></i>
             </li>
 
         </ul>
