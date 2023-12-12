@@ -17,13 +17,18 @@
     <div id="app">
         <input type="text" v-model="message" placeholder="Inserisci un Task" @keyup.enter="addTodo()">
         <button @click="addTodo()">Add</button>
-        <ul>
+        <div v-if="error">
+            <small>ERROR 404</small>
+        </div>
+
+        <ul v-if = "todos.length > 0">
             <li v-for="(todo,i) in todos" :key="i" :class="todo.done === true ? 'done' : '' " @click="checkDone(i)">
                 {{todo.text}}
                 <i class="fa-solid fa-x" @click="removeTodo(i)"></i>
             </li>
-
         </ul>
+        <h1 v-else>TESTA DI CAZZO ARRAY VUOTO</h1>
+
     </div>
 
     <script src="assets/js/main.js"></script>

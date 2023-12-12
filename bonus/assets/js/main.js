@@ -4,9 +4,7 @@ createApp({
     data() {
         return {
             message: "",
-
-
-
+            error: false,
             todos: [
                 {
                     text: 'Fare i compiti',
@@ -30,8 +28,15 @@ createApp({
         },
 
         addTodo() {
-            this.todos.unshift({ text: this.message, done: false });
-            this.message = "";
+            if (this.message.length < 5) {
+                this.error = true;
+                console.log("sono qui");
+            }
+            else {
+                this.todos.unshift({ text: this.message, done: false });
+                this.message = "";
+                this.error = false;
+            }
         },
 
         checkDone(index) {
